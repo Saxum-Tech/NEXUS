@@ -2,7 +2,8 @@
  * types/database.ts
  * ─────────────────────────────────────────────────────────────
  * Hand-written to match supabase/migrations/0001_init_schema.sql
- * exactly. In a real project, replace this with the output of:
+ * and later additive migrations exactly. In a real project, replace
+ * this with the output of:
  *
  *     npx supabase gen types typescript --local > types/database.ts
  *
@@ -15,6 +16,15 @@
 
 export type AppRole = 'super_admin' | 'admin' | 'editor' | 'viewer';
 export type UserStatus = 'active' | 'invited' | 'suspended';
+export type MicrosoftConsentStatus =
+  | 'not_configured'
+  | 'pending_admin_consent'
+  | 'active'
+  | 'revoked'
+  | 'error';
+export type MicrosoftLinkStatus = 'active' | 'revoked' | 'error';
+export type MicrosoftConsentGrantType = 'delegated' | 'application';
+export type MicrosoftGraphActionStatus = 'success' | 'failure' | 'skipped';
 
 export interface Database {
   public: {
@@ -166,6 +176,148 @@ export interface Database {
         };
         Update: Partial<Database['public']['Tables']['invite_tokens']['Insert']>;
       };
+
+      microsoft_tenants: {
+        Row: {
+          id: string;
+          org_id: string;
+          entra_tenant_id: string;
+          display_name: string | null;
+          primary_domain: string | null;
+          consent_status: MicrosoftConsentStatus;
+          admin_consent_granted_at: string | null;
+          last_consent_checked_at: string | null;
+          last_error_at: string | null;
+          last_error_code: string | null;
+          last_error_message: string | null;
+          created_by: string | null;
+          updated_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          entra_tenant_id: string;
+          display_name?: string | null;
+          primary_domain?: string | null;
+          consent_status?: MicrosoftConsentStatus;
+          admin_consent_granted_at?: string | null;
+          last_consent_checked_at?: string | null;
+          last_error_at?: string | null;
+          last_error_code?: string | null;
+          last_error_message?: string | null;
+          created_by?: string | null;
+          updated_by?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['microsoft_tenants']['Insert']>;
+      };
+
+      microsoft_user_links: {
+        Row: {
+          id: string;
+          org_id: string;
+          microsoft_tenant_id: string;
+          profile_id: string;
+          entra_user_id: string;
+          user_principal_name: string;
+          mail: string | null;
+          display_name: string | null;
+          consent_scopes: string[];
+          status: MicrosoftLinkStatus;
+          consented_at: string | null;
+          last_seen_at: string | null;
+          revoked_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          microsoft_tenant_id: string;
+          profile_id: string;
+          entra_user_id: string;
+          user_principal_name: string;
+          mail?: string | null;
+          display_name?: string | null;
+          consent_scopes?: string[];
+          status?: MicrosoftLinkStatus;
+          consented_at?: string | null;
+          last_seen_at?: string | null;
+          revoked_at?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['microsoft_user_links']['Insert']>;
+      };
+
+      microsoft_consent_grants: {
+        Row: {
+          id: string;
+          org_id: string;
+          microsoft_tenant_id: string;
+          grant_type: MicrosoftConsentGrantType;
+          granted_by_profile_id: string | null;
+          scopes: string[];
+          consented_at: string;
+          expires_at: string | null;
+          revoked_at: string | null;
+          metadata: Record<string, unknown>;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          microsoft_tenant_id: string;
+          grant_type: MicrosoftConsentGrantType;
+          granted_by_profile_id?: string | null;
+          scopes?: string[];
+          consented_at?: string;
+          expires_at?: string | null;
+          revoked_at?: string | null;
+          metadata?: Record<string, unknown>;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['microsoft_consent_grants']['Insert']>;
+      };
+
+      microsoft_graph_activity: {
+        Row: {
+          id: number;
+          org_id: string;
+          actor_id: string | null;
+          microsoft_tenant_id: string | null;
+          microsoft_user_link_id: string | null;
+          request_id: string | null;
+          operation: string;
+          resource_type: string;
+          action_status: MicrosoftGraphActionStatus;
+          permission_snapshot: string[];
+          metadata: Record<string, unknown>;
+          error_code: string | null;
+          error_message: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: number;
+          org_id: string;
+          actor_id?: string | null;
+          microsoft_tenant_id?: string | null;
+          microsoft_user_link_id?: string | null;
+          request_id?: string | null;
+          operation: string;
+          resource_type: string;
+          action_status: MicrosoftGraphActionStatus;
+          permission_snapshot?: string[];
+          metadata?: Record<string, unknown>;
+          error_code?: string | null;
+          error_message?: string | null;
+          created_at?: string;
+        };
+        Update: Partial<Database['public']['Tables']['microsoft_graph_activity']['Insert']>;
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -177,6 +329,10 @@ export interface Database {
     Enums: {
       app_role: AppRole;
       user_status: UserStatus;
+      microsoft_consent_status: MicrosoftConsentStatus;
+      microsoft_link_status: MicrosoftLinkStatus;
+      microsoft_consent_grant_type: MicrosoftConsentGrantType;
+      microsoft_graph_action_status: MicrosoftGraphActionStatus;
     };
   };
 }
