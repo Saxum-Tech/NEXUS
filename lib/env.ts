@@ -55,7 +55,7 @@ export const env = {
   /** Microsoft / Graph configuration. Required by lib/microsoft/config.ts before Graph is used. */
   microsoftClientId: optional('MICROSOFT_CLIENT_ID'),
   microsoftClientSecret: optional('MICROSOFT_CLIENT_SECRET'),
-  microsoftTenantId: process.env['MICROSOFT_TENANT_ID'] ?? 'common',
+  microsoftTenantId: process.env['MICROSOFT_TENANT_ID'] ?? 'organizations',
   microsoftRedirectUri: optional('MICROSOFT_REDIRECT_URI'),
   microsoftPostLogoutRedirectUri: optional('MICROSOFT_POST_LOGOUT_REDIRECT_URI'),
   microsoftGraphScopes:
