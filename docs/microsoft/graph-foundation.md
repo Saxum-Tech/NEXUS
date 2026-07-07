@@ -23,6 +23,21 @@ The initial Graph scope is intentionally conservative:
 5. Log every consent, token refresh failure, Graph action, and privileged Microsoft operation.
 6. Keep Microsoft tenant ID separate from the internal organisation ID.
 
+## Database foundation
+
+The first Microsoft database milestone is `supabase/migrations/0005_microsoft_identity_schema.sql`.
+
+It introduces:
+
+- `microsoft_tenants` — maps a NEXUS organisation to one Microsoft Entra tenant for the MVP;
+- `microsoft_user_links` — maps a NEXUS profile to the Microsoft user object used by Graph;
+- `microsoft_consent_grants` — records delegated/application consent metadata and scopes;
+- `microsoft_graph_activity` — append-only technical telemetry for Graph calls.
+
+The internal NEXUS tenant boundary remains `public.organisations.id`. The Microsoft tenant id from Entra ID remains external metadata and must never replace NEXUS organisation scoping.
+
+The Microsoft tables are intentionally read-only from normal browser sessions. Writes must go through trusted Route Handlers using the Supabase service-role client after `requirePermission()` checks and audit logging.
+
 ## Recommended service modules
 
 ```text
