@@ -1,8 +1,8 @@
 {
-  "name": "enterprise-app-template",
-  "version": "0.2.0",
+  "name": "nexus-outlook-companion",
+  "version": "0.1.0",
   "private": true,
-  "description": "Reusable enterprise app foundation: invite-only username/password auth on Supabase, dynamic branding, role-based admin panel.",
+  "description": "NEXUS enterprise Microsoft 365 and Outlook companion platform for governed AI email assistance, knowledge, templates, escalation workflows, directories, analytics, and tenant-isolated operations.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
