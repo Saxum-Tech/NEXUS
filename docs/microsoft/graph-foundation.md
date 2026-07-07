@@ -74,13 +74,15 @@ lib/graph/
 ```text
 MICROSOFT_CLIENT_ID=
 MICROSOFT_CLIENT_SECRET=
-MICROSOFT_TENANT_ID=common
+MICROSOFT_TENANT_ID=organizations
 MICROSOFT_REDIRECT_URI=
 MICROSOFT_POST_LOGOUT_REDIRECT_URI=
 MICROSOFT_GRAPH_SCOPES=openid profile email offline_access User.Read Mail.Read
 NEXT_PUBLIC_MICROSOFT_CLIENT_ID=
 NEXT_PUBLIC_OUTLOOK_ADDIN_ENABLED=false
 ```
+
+Use a fixed Entra tenant id for single-tenant enterprise deployments.
 
 ## Dependency plan
 
