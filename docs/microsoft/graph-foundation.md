@@ -38,6 +38,18 @@ The internal NEXUS tenant boundary remains `public.organisations.id`. The Micros
 
 The Microsoft tables are intentionally read-only from normal browser sessions. Writes must go through trusted Route Handlers using the Supabase service-role client after `requirePermission()` checks and audit logging.
 
+## Server configuration foundation
+
+The first server-side Microsoft helper milestone lives under `lib/microsoft/`.
+
+It introduces:
+
+- `config.ts` — validates required Microsoft environment variables and builds OAuth endpoint URLs;
+- `permissions.ts` — normalises and validates the conservative initial delegated Graph scope set;
+- `tenant.ts` — parses Microsoft token identity claims and checks tenant compatibility.
+
+These helpers are intentionally dependency-free and do not call Microsoft Graph. They prepare the app for the next PR: OAuth callback handling, tenant lookup, user-link persistence, and consent/activity logging.
+
 ## Recommended service modules
 
 ```text
