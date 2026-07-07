@@ -1,0 +1,15 @@
+/**
+ * app/(admin)/admin/overview.module.css
+ */
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  max-width: 480px;
+}
+
+.status {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}

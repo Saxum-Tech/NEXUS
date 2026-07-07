@@ -1,0 +1,31 @@
+/**
+ * app/(app)/profile/profile.module.css
+ */
+
+.layout {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.roleRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.detailLabel { color: var(--color-text-secondary); font-size: var(--text-base); }
+.detailSep   { color: var(--color-text-tertiary); }
+
+.formStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.feedback { margin-bottom: var(--space-4); }

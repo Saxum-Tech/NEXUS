@@ -1,0 +1,135 @@
+/**
+ * app/(admin)/admin/users/invite/invite.module.css
+ */
+
+.page {
+  padding: 18px;
+}
+
+.header {
+  margin-bottom: 18px;
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 16px;
+  align-items: start;
+}
+
+.card {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.cardTitle {
+  font-size: var(--text-md);
+  font-weight: var(--font-bold);
+  margin-bottom: 16px;
+}
+
+.infoBand {
+  background: var(--color-brand-subtle);
+  border: 1px solid var(--color-brand-border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: var(--text-base);
+  color: var(--color-brand);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.fieldGap {
+  margin-bottom: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.successBox {
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.successTitle {
+  font-weight: var(--font-bold);
+  color: var(--color-success);
+  margin-bottom: 8px;
+}
+
+.linkBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.linkInput {
+  flex: 1;
+  padding: 7px 10px;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-1);
+}
+
+.errorBox {
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-danger-border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: var(--text-base);
+  color: var(--color-danger);
+  margin-bottom: 16px;
+}
+
+.sideStack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stepItem {
+  display: flex;
+  gap: 10px;
+  font-size: var(--text-base);
+  margin-bottom: 12px;
+}
+
+.stepNum {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-brand);
+  color: white;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.successTitle { font-weight: var(--font-bold); margin-bottom: var(--space-2); }
+.successDesc  { font-size: var(--text-base); margin-bottom: var(--space-3); }

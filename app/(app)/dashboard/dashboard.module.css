@@ -1,0 +1,9 @@
+/**
+ * app/(app)/dashboard/dashboard.module.css
+ */
+
+.placeholder {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}

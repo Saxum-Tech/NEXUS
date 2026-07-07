@@ -1,0 +1,105 @@
+/**
+ * styles/tokens.css
+ * ─────────────────────────────────────────────────────────────
+ * Design tokens — the single source of truth for colour,
+ * spacing, radius, and typography. Every component imports
+ * from these custom properties rather than hardcoding values.
+ *
+ * --color-brand is overridden at runtime: see
+ * components/layout/BrandProvider.tsx, which reads
+ * app_config.primary_color from the database and calls
+ * document.documentElement.style.setProperty('--color-brand', ...)
+ * on mount. Everything else in this file is static.
+ * ─────────────────────────────────────────────────────────────
+ */
+
+:root {
+  /* Brand (runtime-overridable) */
+  --color-brand: #6c4de6;
+  --color-brand-subtle: #f5eeff;
+  --color-brand-border: rgba(108, 77, 230, 0.25);
+  --color-brand-ring: rgba(108, 77, 230, 0.18);
+
+  /* Neutral surfaces */
+  --color-bg: #f4f5f7;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #f0f1f3;
+  --color-surface-3: #e6e7ea;
+
+  /* Borders */
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border: rgba(0, 0, 0, 0.13);
+  --color-border-strong: rgba(0, 0, 0, 0.22);
+
+  /* Text */
+  --color-text-primary: #0f1117;
+  --color-text-secondary: #555b6a;
+  --color-text-tertiary: #959aa6;
+  --color-text-inverse: #ffffff;
+
+  /* Semantic */
+  --color-success: #1a7f4b;
+  --color-success-bg: #eafaf1;
+  --color-success-border: rgba(26, 127, 75, 0.22);
+
+  --color-danger: #c0392b;
+  --color-danger-bg: #fef0f0;
+  --color-danger-border: rgba(192, 57, 43, 0.22);
+
+  --color-warning: #9a6200;
+  --color-warning-bg: #fff8ec;
+  --color-warning-border: rgba(154, 98, 0, 0.22);
+
+  --color-info: #1a4dbf;
+  --color-info-bg: #eef4ff;
+  --color-info-border: rgba(26, 77, 191, 0.22);
+
+  /* Admin (dark sidebar) */
+  --color-admin-bg: #13152a;
+  --color-admin-border: rgba(255, 255, 255, 0.07);
+  --color-admin-text: rgba(255, 255, 255, 0.9);
+  --color-admin-text-muted: rgba(255, 255, 255, 0.5);
+  --color-admin-hover: rgba(255, 255, 255, 0.06);
+  --color-admin-active: rgba(255, 255, 255, 0.09);
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+
+  --text-xs: 11px;
+  --text-sm: 12px;
+  --text-base: 13px;
+  --text-md: 14px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  --text-2xl: 22px;
+  --text-3xl: 26px;
+
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.14);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.18);
+
+  /* Layout */
+  --sidebar-width: 224px;
+  --topbar-height: 56px;
+}
